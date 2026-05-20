@@ -54,11 +54,143 @@ export default defineConfig({
     {
       name: "Google Sans Code",
       cssVariable: "--font-google-sans-code",
-      provider: fontProviders.google(),
-      fallbacks: ["monospace"],
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-Light.ttf",
+            ],
+            weight: 300,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-Regular.ttf",
+            ],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-Medium.ttf",
+            ],
+            weight: 500,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-SemiBold.ttf",
+            ],
+            weight: 600,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-Bold.ttf",
+            ],
+            weight: 700,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-LightItalic.ttf",
+            ],
+            weight: 300,
+            style: "italic",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-Italic.ttf",
+            ],
+            weight: 400,
+            style: "italic",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-MediumItalic.ttf",
+            ],
+            weight: 500,
+            style: "italic",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-SemiBoldItalic.ttf",
+            ],
+            weight: 600,
+            style: "italic",
+          },
+          {
+            src: [
+              "./src/assets/fonts/google-sans-code/GoogleSansCode-BoldItalic.ttf",
+            ],
+            weight: 700,
+            style: "italic",
+          },
+        ],
+      },
+      fallbacks: [],
       weights: [300, 400, 500, 600, 700],
       styles: ["normal", "italic"],
-      formats: ["woff", "ttf"],
+      formats: ["ttf"],
+    },
+    {
+      name: "Noto Sans SC",
+      cssVariable: "--font-noto-sans-sc",
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          {
+            src: [
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-300-normal.woff2",
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-300-normal.woff",
+            ],
+            weight: 300,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-400-normal.woff2",
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-400-normal.woff",
+            ],
+            weight: 400,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-500-normal.woff2",
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-500-normal.woff",
+            ],
+            weight: 500,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-600-normal.woff2",
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-600-normal.woff",
+            ],
+            weight: 600,
+            style: "normal",
+          },
+          {
+            src: [
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-700-normal.woff2",
+              "./src/assets/fonts/noto-sans-sc/files/noto-sans-sc-chinese-simplified-700-normal.woff",
+            ],
+            weight: 700,
+            style: "normal",
+          },
+        ],
+      },
+      fallbacks: [
+        "Microsoft YaHei UI",
+        "Microsoft YaHei",
+        "PingFang SC",
+        "sans-serif",
+      ],
+      weights: [300, 400, 500, 600, 700],
+      styles: ["normal"],
+      formats: ["woff2", "woff"],
     },
   ],
   env: {

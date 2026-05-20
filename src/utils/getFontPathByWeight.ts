@@ -12,6 +12,19 @@ export function getFontPathByWeight(
   const format = options?.format ?? "truetype";
 
   return fonts
-    .find(font => font.weight === String(weight) && font.style === style)
+    .find(font => font.style === style && supportsWeight(font.weight, weight))
     ?.src.find(file => file.format === format)?.url;
+}
+
+function supportsWeight(fontWeight: string | undefined, targetWeight: number) {
+  if (fontWeight === undefined) return false;
+
+  const weights = fontWeight.split(/\s+/).map(Number);
+
+  if (weights.length === 1) {
+    return weights[0] === targetWeight;
+  }
+
+  const [minWeight, maxWeight] = weights;
+  return targetWeight >= minWeight && targetWeight <= maxWeight;
 }

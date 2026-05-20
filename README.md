@@ -164,3 +164,14 @@ Licensed under the MIT License, Copyright © 2026
 ---
 
 Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contributors](https://github.com/satnaing/astro-paper/graphs/contributors).
+
+
+# TODO list
+- [x] 解决 `Could not fetch from https://fonts.google.com/metadata/fonts.` 的问题
+- [x] 选择合适的中文字体，使用 Noto Sans SC
+- [ ] 写一篇在 cloudflare pages 搭建 astro-paper 的博客
+- [ ] 将基本信息替换成我自己的个人信息
+- [ ] 将所有的博客按照 astro-paper 的风格迁移过来
+- [ ] 加入评论区，Waline or Giscus?
+- [ ] 点赞和浏览量统计，自建 Cloudflare Workers + KV？ 
+- [ ] Google Site Verification，让 google 主动爬取我的网页

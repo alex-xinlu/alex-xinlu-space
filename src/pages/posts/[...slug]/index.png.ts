@@ -27,22 +27,41 @@ export const GET: APIRoute = async ({ props, url }) => {
     return new Response(null, { status: 404, statusText: "Not found" });
   }
 
-  const fonts = fontData["--font-google-sans-code"];
-  const regularFontPath = getFontPathByWeight(fonts, 400);
-  const boldFontPath = getFontPathByWeight(fonts, 700);
+  const googleSansCodeFonts = fontData["--font-google-sans-code"];
+  const notoSansScFonts = fontData["--font-noto-sans-sc"];
+  const regularFontPath = getFontPathByWeight(googleSansCodeFonts, 400);
+  const boldFontPath = getFontPathByWeight(googleSansCodeFonts, 700);
+  const cjkRegularFontPath = getFontPathByWeight(notoSansScFonts, 400, {
+    format: "woff",
+  });
+  const cjkBoldFontPath = getFontPathByWeight(notoSansScFonts, 700, {
+    format: "woff",
+  });
 
-  if (regularFontPath === undefined || boldFontPath === undefined) {
+  if (
+    regularFontPath === undefined ||
+    boldFontPath === undefined ||
+    cjkRegularFontPath === undefined ||
+    cjkBoldFontPath === undefined
+  ) {
     throw new Error("Cannot find the font path.");
   }
 
-  const [regularData, boldData] = await Promise.all([
-    fetch(experimental_getFontFileURL(regularFontPath, url)).then(res =>
-      res.arrayBuffer()
-    ),
-    fetch(experimental_getFontFileURL(boldFontPath, url)).then(res =>
-      res.arrayBuffer()
-    ),
-  ]);
+  const [regularData, boldData, cjkRegularData, cjkBoldData] =
+    await Promise.all([
+      fetch(experimental_getFontFileURL(regularFontPath, url)).then(res =>
+        res.arrayBuffer()
+      ),
+      fetch(experimental_getFontFileURL(boldFontPath, url)).then(res =>
+        res.arrayBuffer()
+      ),
+      fetch(experimental_getFontFileURL(cjkRegularFontPath, url)).then(res =>
+        res.arrayBuffer()
+      ),
+      fetch(experimental_getFontFileURL(cjkBoldFontPath, url)).then(res =>
+        res.arrayBuffer()
+      ),
+    ]);
 
   const svg = await satori(
     {
@@ -55,6 +74,7 @@ export const GET: APIRoute = async ({ props, url }) => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          fontFamily: "Google Sans Code, Noto Sans SC",
         },
         children: [
           {
@@ -181,6 +201,18 @@ export const GET: APIRoute = async ({ props, url }) => {
         {
           name: "Google Sans Code",
           data: boldData,
+          weight: 700,
+          style: "normal",
+        },
+        {
+          name: "Noto Sans SC",
+          data: cjkRegularData,
+          weight: 400,
+          style: "normal",
+        },
+        {
+          name: "Noto Sans SC",
+          data: cjkBoldData,
           weight: 700,
           style: "normal",
         },
