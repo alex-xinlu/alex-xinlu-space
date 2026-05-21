@@ -14,7 +14,7 @@ tags:
 
 本文介绍在 Windows 上使用 GitHub Pages 与 Jekyll 搭建并发布个人博客的完整流程。
 
-![GitHub Pages 与 Jekyll 搭建博客教程封面](@/assets/images/2025-05/cover-github_pages.png)
+![GitHub Pages 与 Jekyll 搭建博客教程封面](@/assets/images/coding/2026-05/cover-github_pages.png)
 
 ## Table of contents
 

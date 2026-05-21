@@ -12,7 +12,7 @@ tags:
   - troubleshooting
 ---
 
-![Dify 流式接口延时排查文章封面](@/assets/images/2025-05/cover-dify.png)
+![Dify 流式接口延时排查文章封面](@/assets/images/ai/2026-05/cover-dify.png)
 
 ## Table of contents
 
@@ -29,7 +29,7 @@ tags:
 
 先看一下这个问题最直观的表现：
 
-![主消息流已经结束，但连接关闭时间明显滞后](@/assets/images/2025-05/20260515-流式接口延时问题示例-v1-chat-messages.png)
+![主消息流已经结束，但连接关闭时间明显滞后](@/assets/images/ai/2026-05/20260515-流式接口延时问题示例-v1-chat-messages.png)
 
 图 1：主消息流已经结束，最后一个流式数据片段的 `event` 也已经是 `message_end`，但连接关闭时间仍然明显滞后。
 
@@ -71,7 +71,7 @@ tags:
 
 顺着这个思路，我先抓包确认了 Dify web app 实际调用的并不是 `/v1/chat-messages`，而是 `/api/chat-messages`。
 
-![/api/chat-messages 是正常的](@/assets/images/2025-05/20260515-流式接口延时问题示例-api-chat-messages.png)
+![/api/chat-messages 是正常的](@/assets/images/ai/2026-05/20260515-流式接口延时问题示例-api-chat-messages.png)
 
 图 2：Dify 的 web app 实际调用的是 `/api/chat-messages`，这一条链路下没有出现 `message_end` 之后还要额外等待的问题。
 
@@ -135,7 +135,7 @@ tags:
 - 如果后续需要标题，可以再通过 `/v1/conversations/:conversation_id/name` 异步触发自动生成
 - 旧会话提问也正常
 
-![修复后的结果](@/assets/images/2025-05/20260515-流式接口延时问题示例-v1-chat-messages（修复后）.png)
+![修复后的结果](@/assets/images/ai/2026-05/20260515-流式接口延时问题示例-v1-chat-messages（修复后）.png)
 
 图 3：关闭 `auto_generate_name` 后，`/v1/chat-messages` 在新会话首问场景下不再出现 `message_end` 之后额外等待的问题。
 
