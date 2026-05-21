@@ -3,10 +3,10 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://alex-xinlu.pages.dev/",
-    title: "Alex's Blog",
-    description: "A minimal, responsive and SEO-friendly Astro blog theme.",
-    author: "Xin Lu",
-    profile: "https://satna.ing",
+    title: "AlexLoo's Blog",
+    description: "Notes on AI, coding, and random thoughts.",
+    author: "alex-xinlu",
+    profile: "https://alex-xinlu.pages.dev/about/",
     ogImage: "default-og.jpg",
     lang: "en",
     timezone: "Asia/Shanghai",
@@ -32,7 +32,7 @@ export default defineAstroPaperConfig({
     { name: "github",   url: "https://github.com/alex-xinlu/alex-xinlu-space" },
     { name: "x",        url: "https://x.com/username" },
     { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
-    { name: "mail",     url: "mailto:yourmail@gmail.com" },
+    { name: "mail",     url: "mailto:xinlu.nlp@gmail.com" },
   ],
   shareLinks: [
     { name: "whatsapp", url: "https://wa.me/?text=" },

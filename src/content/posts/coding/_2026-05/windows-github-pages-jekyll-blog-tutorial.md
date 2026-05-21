@@ -1,18 +1,20 @@
 ---
-pubDatetime: 2026-05-15T08:00:00Z
-modDatetime: 2026-05-20T07:34:12Z
 title: Windows 上用 GitHub Pages + Jekyll 搭建个人博客完整教程
+description: 在 Windows 上安装 Ruby 与 Jekyll，创建本地博客并推送到 GitHub Pages 发布的完整步骤教程。
+pubDatetime: 2026-05-15T08:00:00Z
+modDatetime: 2026-05-21T14:23:58.368Z
 featured: false
 draft: false
 tags:
-  - docs
+  - windows
   - blog
   - jekyll
   - github-pages
-description: 在 Windows 上安装 Ruby 与 Jekyll，创建本地博客并推送到 GitHub Pages 发布的完整步骤教程。
 ---
 
 本文介绍在 Windows 上使用 GitHub Pages 与 Jekyll 搭建并发布个人博客的完整流程。
+
+![GitHub Pages 与 Jekyll 搭建博客教程封面](@/assets/images/2025-05/cover-github_pages.png)
 
 ## Table of contents
 
