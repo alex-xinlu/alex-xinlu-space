@@ -3,9 +3,9 @@ import { defineAstroPaperConfig } from "./src/types/config";
 export default defineAstroPaperConfig({
   site: {
     url: "https://alex-xinlu.pages.dev/",
-    title: "AlexLoo / Blog",
+    title: "X I N L U",
     description: "Notes on AI, coding, and random thoughts.",
-    author: "alex-xinlu",
+    author: "Xin Lu",
     profile: "https://alex-xinlu.pages.dev/about/",
     ogImage: "default-og.jpg",
     lang: "en",
