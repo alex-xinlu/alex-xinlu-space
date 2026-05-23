@@ -33,44 +33,27 @@ const homePath = getRelativeLocaleUrl(locale, "");
     data-home-path={homePath}
     class="app-layout"
   >
-    <section id="hero" class="border-border border-b pt-8 pb-6">
-      <h1 class="my-4 inline-block text-4xl font-bold sm:my-8 sm:text-5xl">
-        Hello!
-      </h1>
-      <a
-        target="_blank"
-        href={getRelativeLocaleUrl(locale, "rss.xml")}
-        class="inline-block"
-        aria-label="RSS Feed"
-        title="RSS Feed"
-      >
-        <IconRss
-          width={20}
-          height={20}
-          class="stroke-accent scale-125 stroke-3 rtl:-rotate-90"
-        />
-        <span class="sr-only">RSS Feed</span>
-      </a>
-
-      <p>
+    <section id="hero" class="border-border border-b pt-10 pb-10 sm:pt-16">
+      <p class="text-accent text-sm font-semibold tracking-wide uppercase">
         <a
-          class="text-accent inline-block text-lg font-medium decoration-dashed underline-offset-4 hover:underline"
+          class="decoration-dashed underline-offset-4 hover:underline"
           href="/about/"
         >
-          我是 Xin Lu，一名 AI 算法工程师。
+          Hello, my name is Xin Lu
         </a>
       </p>
-      <p class="mt-4">
-        长期关注 NLP、大模型应用、RAG、Workflow 和评测优化。这里记录我在真实项目中的工程实践、问题排查与技术复盘，也会写一些杂记与随想。
+      <p class="text-muted-foreground text-sm tracking-wide uppercase">
+        AI Engineer
       </p>
-      <p class="mt-2">
-        阅读文章，或查看
-        <LinkButton
-          class="hover:text-accent underline decoration-dashed underline-offset-4"
-          href={getRelativeLocaleUrl(locale, "about")}
-        >
-        About
-        </LinkButton> 页面。
+      <h1
+        class="my-4 max-w-3xl text-5xl leading-none font-bold sm:my-6 sm:text-7xl"
+      >
+        I make LLMs reliable.
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-lg leading-8">
+        我专注于 NLP、大模型应用、RAG
+        与评测优化。通过工程实践打磨真实可用、持续可靠的 AI 系统。
       </p>
       {
         socials.length > 0 && (
@@ -78,7 +61,23 @@ const homePath = getRelativeLocaleUrl(locale, "");
             <div class="me-2 mb-1 whitespace-nowrap sm:mb-0">
               {t.home.socialLinks}:
             </div>
-            <Socials />
+            <div class="flex flex-wrap items-center gap-1">
+              <Socials />
+              <LinkButton
+                target="_blank"
+                href={getRelativeLocaleUrl(locale, "rss.xml")}
+                class="p-2 hover:rotate-6 sm:p-1"
+                aria-label="RSS Feed"
+                title="RSS Feed"
+              >
+                <IconRss
+                  width={20}
+                  height={20}
+                  class="stroke-accent inline-block size-6 scale-125 stroke-2 opacity-90 sm:scale-110"
+                />
+                <span class="sr-only">RSS Feed</span>
+              </LinkButton>
+            </div>
           </div>
         )
       }
