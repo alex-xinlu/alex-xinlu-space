@@ -29,7 +29,7 @@ export default defineAstroPaperConfig({
     search: "pagefind",
   },
   socials: [
-    { name: "github",   url: "https://github.com/alex-xinlu/alex-xinlu-space" },
+    { name: "github",   url: "https://github.com/alex-xinlu" },
     { name: "x",        url: "https://x.com/username" },
     { name: "linkedin", url: "https://www.linkedin.com/in/username/" },
     { name: "mail",     url: "mailto:xinlu.nlp@gmail.com" },
