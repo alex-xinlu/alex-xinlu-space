@@ -169,7 +169,7 @@ Made with 🤍 by [Sat Naing](https://satnaing.dev) 👨🏻‍💻 and [contrib
 # TODO list
 - [x] 解决 `Could not fetch from https://fonts.google.com/metadata/fonts.` 的问题
 - [x] 选择合适的中文字体，使用 Noto Sans SC
-- [ ] 写一篇在 cloudflare pages 搭建 astro-paper 的博客
+- [x] 写一篇在 cloudflare pages 搭建 astro-paper 的博客
 - [x] 将基本信息替换成我自己的个人信息
 - [ ] 配置 social links 和 share links
 - [x] 将所有的博客按照 astro-paper 的风格迁移过来
