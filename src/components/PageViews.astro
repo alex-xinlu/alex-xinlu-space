@@ -4,6 +4,7 @@ type Props = {
   pathname: string;
   showPageViews?: boolean;
   showSiteViews?: boolean;
+  tone?: "muted" | "inherit";
 };
 
 const {
@@ -11,12 +12,14 @@ const {
   pathname,
   showPageViews = true,
   showSiteViews = false,
+  tone = "muted",
 } = Astro.props;
 ---
 
 <div
   class:list={[
-    "text-muted-foreground flex items-center gap-x-2 text-sm sm:text-base",
+    "flex items-center gap-x-2 text-sm sm:text-base",
+    { "text-muted-foreground": tone === "muted" },
     className,
   ]}
   data-page-view-stats
@@ -44,35 +47,42 @@ const {
 
 <script is:inline data-astro-rerun>
   (function () {
-    const root = document.querySelector("[data-page-view-stats]");
-    if (!root) return;
-
-    const pathname = root.getAttribute("data-pathname") || location.pathname;
-    const pageViews = root.querySelector("[data-page-views]");
-    const siteViews = root.querySelector("[data-site-views]");
+    const roots = Array.from(
+      document.querySelectorAll("[data-page-view-stats]")
+    ).filter(root => !root.dataset.viewStatsMounted);
+    if (roots.length === 0) return;
 
     function formatCount(value) {
       const number = Number(value || 0);
       return new Intl.NumberFormat("zh-CN").format(number);
     }
 
-    function render(data) {
+    function render(root, data) {
       if (!data) return;
-      if (pageViews) pageViews.textContent = formatCount(data.pageViews);
+      const pathname = root.getAttribute("data-pathname") || location.pathname;
+      const pageViews = root.querySelector("[data-page-views]");
+      const siteViews = root.querySelector("[data-site-views]");
+      if (pageViews && data.pathname === pathname) {
+        pageViews.textContent = formatCount(data.pageViews);
+      }
       if (siteViews) siteViews.textContent = formatCount(data.siteViews);
     }
 
-    render(window.__blogViewStats);
+    roots.forEach(root => {
+      root.dataset.viewStatsMounted = "true";
+      render(root, window.__blogViewStats);
 
-    document.addEventListener("blog:view-stats", event => {
-      render(event.detail);
+      document.addEventListener("blog:view-stats", event => {
+        render(root, event.detail);
+      });
+
+      const pathname = root.getAttribute("data-pathname") || location.pathname;
+      fetch(`/api/views?pathname=${encodeURIComponent(pathname)}`, {
+        headers: { accept: "application/json" },
+      })
+        .then(response => (response.ok ? response.json() : null))
+        .then(data => render(root, data))
+        .catch(() => {});
     });
-
-    fetch(`/api/views?pathname=${encodeURIComponent(pathname)}`, {
-      headers: { accept: "application/json" },
-    })
-      .then(response => (response.ok ? response.json() : null))
-      .then(render)
-      .catch(() => {});
   })();
 </script>
