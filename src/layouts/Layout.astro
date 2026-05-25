@@ -122,5 +122,56 @@ const rssHref = getRelativeLocaleUrl(
     <script>
       import "@/scripts/theme";
     </script>
+    <script is:inline data-astro-rerun>
+      (function () {
+        const pathname = location.pathname || "/";
+        const storageKey = "blog:viewed:" + pathname;
+
+        function broadcast(data) {
+          if (!data) return;
+          window.__blogViewStats = data;
+          document.dispatchEvent(
+            new CustomEvent("blog:view-stats", { detail: data })
+          );
+        }
+
+        function fetchStats() {
+          return fetch(`/api/views?pathname=${encodeURIComponent(pathname)}`, {
+            headers: { accept: "application/json" },
+          }).then(response => (response.ok ? response.json() : null));
+        }
+
+        function recordView() {
+          return fetch("/api/views", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+            body: JSON.stringify({ pathname }),
+          }).then(response => (response.ok ? response.json() : null));
+        }
+
+        try {
+          if (sessionStorage.getItem(storageKey)) {
+            fetchStats()
+              .then(broadcast)
+              .catch(() => {});
+            return;
+          }
+
+          sessionStorage.setItem(storageKey, "1");
+          recordView()
+            .then(broadcast)
+            .catch(() => {
+              sessionStorage.removeItem(storageKey);
+            });
+        } catch {
+          recordView()
+            .then(broadcast)
+            .catch(() => {});
+        }
+      })();
+    </script>
   </body>
 </html>

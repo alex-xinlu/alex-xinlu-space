@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types";
 import Socials from "./Socials.astro";
+import PageViews from "./PageViews.astro";
 import { useTranslations } from "@/i18n";
 
 type Props = {
@@ -11,6 +12,7 @@ const { noMarginTop = false, class: className, ...attrs } = Astro.props;
 
 const t = useTranslations(Astro.currentLocale);
 const currentYear = new Date().getFullYear();
+const pathname = Astro.url.pathname;
 ---
 
 <footer
@@ -25,6 +27,13 @@ const currentYear = new Date().getFullYear();
       <span>{t.footer.copyright} &#169; {currentYear}</span>
       <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
       <span>{t.footer.allRightsReserved}</span>
+      <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
+      <PageViews
+        pathname={pathname}
+        showPageViews={false}
+        showSiteViews
+        class="mt-1 sm:mt-0"
+      />
     </div>
   </div>
 </footer>

@@ -125,6 +125,18 @@ Node.js version: 22.12.0 or newer
 
 The build command also runs Pagefind indexing and copies the generated search index into `public/pagefind/`.
 
+### Page Views
+
+Page and site view counts are handled by a Cloudflare Pages Function at `/api/views`.
+
+Create a Cloudflare D1 database and bind it to the Pages project with this binding name:
+
+```txt
+BLOG_ANALYTICS_DB
+```
+
+The function creates its required `page_views` and `site_stats` tables automatically on first use. The client records each pathname once per browser session to avoid inflating counts from repeated refreshes, then displays post and site totals on article pages.
+
 ## TODO
 
 - [x] Fix `Could not fetch from https://fonts.google.com/metadata/fonts.`
@@ -134,7 +146,7 @@ The build command also runs Pagefind indexing and copies the generated search in
 - [ ] Finish social links and share links
 - [x] Migrate posts into the AstroPaper content style
 - [x] Add comments with Giscus
-- [ ] Add likes and page view statistics, possibly with Cloudflare Workers + KV
+- [x] Add page view statistics with Cloudflare Pages Functions + D1
 - [ ] Add Google Site Verification and submit the site to Google Search Console
 
 ## Credits

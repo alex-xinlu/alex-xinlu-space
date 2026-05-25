@@ -1,0 +1,78 @@
+---
+type Props = {
+  class?: string;
+  pathname: string;
+  showPageViews?: boolean;
+  showSiteViews?: boolean;
+};
+
+const {
+  class: className = "",
+  pathname,
+  showPageViews = true,
+  showSiteViews = false,
+} = Astro.props;
+---
+
+<div
+  class:list={[
+    "text-muted-foreground flex items-center gap-x-2 text-sm sm:text-base",
+    className,
+  ]}
+  data-page-view-stats
+  data-pathname={pathname}
+  aria-live="polite"
+>
+  {
+    showPageViews && (
+      <>
+        <span>Views</span>
+        <span data-page-views>--</span>
+      </>
+    )
+  }
+  {showPageViews && showSiteViews && <span aria-hidden="true">·</span>}
+  {
+    showSiteViews && (
+      <>
+        <span>Site visits</span>
+        <span data-site-views>--</span>
+      </>
+    )
+  }
+</div>
+
+<script is:inline data-astro-rerun>
+  (function () {
+    const root = document.querySelector("[data-page-view-stats]");
+    if (!root) return;
+
+    const pathname = root.getAttribute("data-pathname") || location.pathname;
+    const pageViews = root.querySelector("[data-page-views]");
+    const siteViews = root.querySelector("[data-site-views]");
+
+    function formatCount(value) {
+      const number = Number(value || 0);
+      return new Intl.NumberFormat("zh-CN").format(number);
+    }
+
+    function render(data) {
+      if (!data) return;
+      if (pageViews) pageViews.textContent = formatCount(data.pageViews);
+      if (siteViews) siteViews.textContent = formatCount(data.siteViews);
+    }
+
+    render(window.__blogViewStats);
+
+    document.addEventListener("blog:view-stats", event => {
+      render(event.detail);
+    });
+
+    fetch(`/api/views?pathname=${encodeURIComponent(pathname)}`, {
+      headers: { accept: "application/json" },
+    })
+      .then(response => (response.ok ? response.json() : null))
+      .then(render)
+      .catch(() => {});
+  })();
+</script>
