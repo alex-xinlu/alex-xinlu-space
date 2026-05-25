@@ -147,7 +147,7 @@ The function creates its required `page_views` and `site_stats` tables automatic
 - [x] Migrate posts into the AstroPaper content style
 - [x] Add comments with Giscus
 - [x] Add page view statistics with Cloudflare Pages Functions + D1
-- [ ] Add Google Site Verification and submit the site to Google Search Console
+- [x] Add Google Site Verification and submit the site to Google Search Console
 
 ## Credits
 
