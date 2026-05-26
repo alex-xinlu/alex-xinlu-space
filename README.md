@@ -143,7 +143,7 @@ The function creates its required `page_views` and `site_stats` tables automatic
 - [x] Choose and configure a Chinese font: Noto Sans SC
 - [x] Write a blog post about deploying AstroPaper on Cloudflare Pages
 - [x] Replace theme defaults with personal site information
-- [ ] Finish social links and share links
+- [x] Finish social links and share links
 - [x] Migrate posts into the AstroPaper content style
 - [x] Add comments with Giscus
 - [x] Add page view statistics with Cloudflare Pages Functions + D1
