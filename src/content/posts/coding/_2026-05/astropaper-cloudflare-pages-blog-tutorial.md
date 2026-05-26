@@ -13,7 +13,7 @@ tags:
 
 这篇文章记录我用 **Astro + AstroPaper + Cloudflare Pages** 搭建个人博客主页的过程。整体方案很轻量：Astro 负责静态站点生成，AstroPaper 提供现成的博客主题，Cloudflare Pages 负责从 GitHub 仓库自动构建和部署。
 
-![我部署后的个人主页截图](@/assets/images/coding/2026-05/cloudflare-07-alex-xinlu-dot-pages-dot-dev-screenshot.png)
+![我部署后的个人主页截图](@/assets/images/coding/2026-05/cloudflare-07-alex-loo-dot-pages-dot-dev-screenshot.png)
 
 ## Table of contents
 
@@ -21,7 +21,7 @@ tags:
 
 之前我也尝试过 GitHub Pages + Jekyll。它足够经典，但我更想要一个现代一点、可定制性更高、前端体验更好的博客主页。Astro 的静态构建速度很快，写 Markdown 也舒服；AstroPaper 主题本身已经包含文章列表、标签、归档、搜索、暗色模式、RSS、站点地图等博客常用能力；Cloudflare Pages 则可以直接连接 GitHub 仓库，提交代码后自动部署。
 
-最终效果可以参考我的站点：[https://alex-xinlu.pages.dev/](https://alex-xinlu.pages.dev/)。
+最终效果可以参考我的站点：[https://alex-loo.pages.dev/](https://alex-loo.pages.dev/)。
 
 ## 准备环境
 
@@ -143,7 +143,7 @@ AstroPaper 这种博客站点优先选择 Pages 就可以。
 | Build command | `pnpm run build` |
 | Build directory | `dist` |
 
-Project name 可以自定义。它会影响 Cloudflare Pages 默认分配的 `*.pages.dev` 子域名，比如项目名是 `alex-xinlu`，默认访问地址就是 `https://alex-xinlu.pages.dev/`。
+Project name 可以自定义。它会影响 Cloudflare Pages 默认分配的 `*.pages.dev` 子域名，比如项目名是 `alex-loo`，默认访问地址就是 `https://alex-loo.pages.dev/`。
 
 ![配置 Cloudflare Pages 构建参数](@/assets/images/coding/2026-05/cloudflare-05-config.png)
 
@@ -155,9 +155,9 @@ Project name 可以自定义。它会影响 Cloudflare Pages 默认分配的 `*.
 
 我的部署结果：
 
-[https://alex-xinlu.pages.dev/](https://alex-xinlu.pages.dev/)
+[https://alex-loo.pages.dev/](https://alex-loo.pages.dev/)
 
-![部署后的个人主页](@/assets/images/coding/2026-05/cloudflare-07-alex-xinlu-dot-pages-dot-dev-screenshot.png)
+![部署后的个人主页](@/assets/images/coding/2026-05/cloudflare-07-alex-loo-dot-pages-dot-dev-screenshot.png)
 
 ## 修改 AstroPaper 首页
 

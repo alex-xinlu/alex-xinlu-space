@@ -2,11 +2,11 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://alex-xinlu.pages.dev/",
-    title: "Xinlu's Blog",
+    url: "https://alex-loo.pages.dev/",
+    title: "Alex Loo",
     description: "Notes on AI, coding, and random thoughts.",
-    author: "Xin Lu",
-    profile: "https://alex-xinlu.pages.dev/about/",
+    author: "Alex Loo",
+    profile: "https://alex-loo.pages.dev/about/",
     ogImage: "default-og.jpg",
     lang: "en",
     timezone: "Asia/Shanghai",
@@ -24,8 +24,7 @@ export default defineAstroPaperConfig({
     showArchives: true,
     showBackButton: true,
     editPost: {
-      enabled: true,
-      url: "https://github.com/alex-xinlu/alex-xinlu-space/edit/main/",
+      enabled: false,
     },
     search: "pagefind",
   },
