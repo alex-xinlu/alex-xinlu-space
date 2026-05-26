@@ -23,7 +23,7 @@ const pathname = Astro.url.pathname;
     class="border-border flex flex-col items-center justify-between border-t py-6 sm:flex-row-reverse sm:py-4"
   >
     <Socials />
-    <div class="my-2 flex flex-col items-center whitespace-nowrap sm:flex-row">
+    <div class="my-2 flex flex-col items-center gap-y-1 whitespace-nowrap sm:flex-row sm:gap-y-0">
       <span>{t.footer.copyright} &#169; {currentYear}</span>
       <span class="hidden sm:inline">&nbsp;|&nbsp;</span>
       <span>{t.footer.allRightsReserved}</span>
@@ -32,8 +32,8 @@ const pathname = Astro.url.pathname;
         pathname={pathname}
         showPageViews={false}
         showSiteViews
+        size="inherit"
         tone="inherit"
-        class="mt-1 sm:mt-0"
       />
     </div>
   </div>
