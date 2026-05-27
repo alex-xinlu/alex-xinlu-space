@@ -2,11 +2,11 @@ import { defineAstroPaperConfig } from "./src/types/config";
 
 export default defineAstroPaperConfig({
   site: {
-    url: "https://alex-loo.pages.dev/",
+    url: "https://alex-xinlu.pages.dev/",
     title: "Alex Loo",
     description: "Notes on AI, coding, and random thoughts.",
     author: "Alex Loo",
-    profile: "https://alex-loo.pages.dev/about/",
+    profile: "https://alex-xinlu.pages.dev/about/",
     ogImage: "default-og.jpg",
     lang: "en",
     timezone: "Asia/Shanghai",

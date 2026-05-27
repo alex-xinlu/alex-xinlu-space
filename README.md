@@ -2,7 +2,7 @@
 
 Personal blog built with [Astro](https://astro.build/) and adapted from the [AstroPaper](https://github.com/satnaing/astro-paper) theme.
 
-Site: <https://alex-loo.pages.dev/>
+Site: <https://alex-xinlu.pages.dev/>
 
 This repository contains my notes on AI, coding, and random thoughts. The site is deployed on Cloudflare Pages and keeps the static-first workflow of AstroPaper while adding project-specific customization for Chinese typography, comments, sharing, and dynamic Open Graph images.
 
